@@ -32,6 +32,10 @@ public class MainActivity extends Activity implements OnClickListener{
 	    Button btn4 = findViewById(R.id.button4);
 	    Button btn5 = findViewById(R.id.button5);
 	    Button btn6 = findViewById(R.id.button6);
+		Button btn7 = findViewById(R.id.button7);
+		Button btn8 = findViewById(R.id.button8);
+		Button btn9 = findViewById(R.id.button9);
+		Button btn10 = findViewById(R.id.button10);
 
 	    btn1.setOnClickListener(this);
 	    btn2.setOnClickListener(this);
@@ -39,6 +43,11 @@ public class MainActivity extends Activity implements OnClickListener{
 	    btn4.setOnClickListener(this);
 	    btn5.setOnClickListener(this);
 	    btn6.setOnClickListener(this);
+		btn7.setOnClickListener(this);
+		btn8.setOnClickListener(this);
+		btn9.setOnClickListener(this);
+		btn10.setOnClickListener(this);
+
 
 		if (Build.VERSION.SDK_INT >= 23)
 			if (! ckeckPermissions())
@@ -56,22 +65,26 @@ public class MainActivity extends Activity implements OnClickListener{
 		final String textToSearch = getString(R.string.textoABuscar);
 
 		switch (v.getId()) {
+			//Localizacion coordenadas
 			case R.id.button1:
 				Toast.makeText(this, getString(R.string.opcion1), Toast.LENGTH_LONG).show();
 				in = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + lat + ',' + lon));
 				startActivity(in);
 				break;
+			//Localizacion direccion
 			case R.id.button2:
 				Toast.makeText(this, getString(R.string.opcion2), Toast.LENGTH_LONG).show();
 				in = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + address));
 				//in = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + textToSearch));
 				startActivity(in);
 				break;
+			//Acceder web
 			case R.id.button3:
 				Toast.makeText(this, getString(R.string.opcion3), Toast.LENGTH_LONG).show();
 				in = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 				startActivity(in);
 				break;
+			//Buscar  google
 			case R.id.button4:
 				Toast.makeText(this, getString(R.string.opcion4), Toast.LENGTH_LONG).show();
 				//in = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/search?q=" + textToSearch));
@@ -79,12 +92,30 @@ public class MainActivity extends Activity implements OnClickListener{
 				in.putExtra(SearchManager.QUERY, textToSearch);
 				startActivity(in);
 				break;
+			//Llamar telefono
 			case R.id.button5:
                 callPhone();
 				break;
+			//Marcar telefono
 			case R.id.button6:
+				Toast.makeText(this, getString(R.string.opcion6), Toast.LENGTH_LONG).show();
+				in = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + getText(R.string.telef)));
+				startActivity(in);
+				break;
+			//Enviar SMS
+			case R.id.button7:
+				Toast.makeText(this, getString(R.string.opcion7), Toast.LENGTH_LONG).show();
+			//Enviar mail
+			case R.id.button8:
+				Toast.makeText(this, getString(R.string.opcion8), Toast.LENGTH_LONG).show();
+			//Acceder contactos
+			case R.id.button9:
+				Toast.makeText(this, getString(R.string.opcion9), Toast.LENGTH_LONG).show();
 				accessContacts();
 				break;
+			//Acceder galeria
+			case R.id.button10:
+				Toast.makeText(this, getString(R.string.opcion10), Toast.LENGTH_LONG).show();
 			}
 	}
 

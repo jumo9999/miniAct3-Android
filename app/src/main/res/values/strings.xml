@@ -12,7 +12,12 @@
     <string name="Boton3">Por URL</string>
     <string name="Boton4">Google</string>
     <string name="Boton5">Llamar</string>
-    <string name="Boton6">Acceder Contactos</string>
+    <string name="Boton6">Marcar</string>
+    <string name="Boton7">Enviar SMS</string>
+    <string name="Boton8">Enviar mail</string>
+    <string name="Boton9">Acceder Contactos</string>
+    <string name="Boton10">Acceder a la galeria</string>
+
     <string name="telef">666666666</string>
 
     <string name="lat">41.60788</string>
@@ -26,7 +31,13 @@
     <string name="opcion3">Accediendo a la web</string>
     <string name="opcion4">Buscando en Google</string>
     <string name="opcion5">Llamando al Tlfn.</string>
-    <string name="opcion6">Accediendo a contactos</string>
+    <string name="opcion6">Tlf. destino 6666666666</string>
+    <string name="opcion7">Enviar SMS</string>
+    <string name="opcion8">Email destino sss@gmail.es</string>
+    <string name="opcion9">Accediendo a contactos</string>
+    <string name="opcion10">Accediendo a la galeria</string>
+
+
 
 
 </resources>

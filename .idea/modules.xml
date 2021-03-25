@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SurtidoIntentImpl.iml" filepath="$PROJECT_DIR$/SurtidoIntentImpl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SurtidoIntentImpl.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SurtidoIntentImpl.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/miniAct3-Android.iml" filepath="$PROJECT_DIR$/.idea/modules/miniAct3-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/miniAct3-Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/miniAct3-Android.app.iml" />
     </modules>
   </component>
 </project>

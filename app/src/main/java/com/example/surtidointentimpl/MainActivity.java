@@ -7,6 +7,9 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +21,12 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class MainActivity extends Activity implements OnClickListener{
 
@@ -56,8 +64,32 @@ public class MainActivity extends Activity implements OnClickListener{
 			  requestPermissions();
 	}
 
-	@SuppressLint("NonConstantResourceId")
-	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				ImageView img = findViewById(R.id.imageView);
+				Uri uri = data.getData();
+				try {
+					InputStream str = getContentResolver().openInputStream(uri);
+					Bitmap bit = BitmapFactory.decodeStream(str);
+					img.setImageBitmap(bit);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+
+		} else if (requestCode == 1) {
+			if (resultCode == RESULT_OK) {
+				TextView tw = findViewById(R.id.textContact);
+				Uri uri = data.getData();
+				Cursor cu = getContentResolver().query(uri, null, null, null, null);
+				cu.moveToFirst();
+				int nameIndex = cu.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+				String name = cu.getString(nameIndex);
+				tw.setText(name);
+			}
+		}
+	}
 	public void onClick (View v) {
 		Intent in;
 		final String lat = getString(R.string.lat);
@@ -124,13 +156,16 @@ public class MainActivity extends Activity implements OnClickListener{
 			//Acceder contactos
 			case R.id.button9:
 				Toast.makeText(this, getString(R.string.opcion9), Toast.LENGTH_LONG).show();
-				accessContacts();
+
+				in = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+				startActivityForResult(in, 1);
 				break;
 			//Acceder galeria
 			case R.id.button10:
 				Toast.makeText(this, getString(R.string.opcion10), Toast.LENGTH_LONG).show();
 				in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 				startActivityForResult(in, 0);
+
 				break;
 			}
 	}

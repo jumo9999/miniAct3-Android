@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import androidx.core.app.ActivityCompat;
+
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -105,9 +107,20 @@ public class MainActivity extends Activity implements OnClickListener{
 			//Enviar SMS
 			case R.id.button7:
 				Toast.makeText(this, getString(R.string.opcion7), Toast.LENGTH_LONG).show();
+				in = new Intent(Intent.ACTION_SENDTO);
+				in.setData(Uri.parse("sms:" + getText(R.string.telef)));
+				in.putExtra(Intent.EXTRA_TEXT, getText(R.string.textMsg));
+				startActivity(in);
+				break;
 			//Enviar mail
 			case R.id.button8:
 				Toast.makeText(this, getString(R.string.opcion8), Toast.LENGTH_LONG).show();
+				in = new Intent(Intent.ACTION_SENDTO);
+				in.setData(Uri.parse("mailto:" + getText(R.string.mail)));
+				in.putExtra(Intent.EXTRA_TEXT, getText(R.string.textMiss));
+				in.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.demo));
+				startActivity(in);
+				break;
 			//Acceder contactos
 			case R.id.button9:
 				Toast.makeText(this, getString(R.string.opcion9), Toast.LENGTH_LONG).show();
@@ -116,6 +129,9 @@ public class MainActivity extends Activity implements OnClickListener{
 			//Acceder galeria
 			case R.id.button10:
 				Toast.makeText(this, getString(R.string.opcion10), Toast.LENGTH_LONG).show();
+				in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				startActivityForResult(in, 0);
+				break;
 			}
 	}
 

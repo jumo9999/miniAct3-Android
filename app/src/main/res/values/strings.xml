@@ -19,6 +19,10 @@
     <string name="Boton10">Acceder a la galeria</string>
 
     <string name="telef">666666666</string>
+    <string name="textMsg">Hola!</string>
+    <string name="mail">sss@gmail.com</string>
+    <string name="textMiss">Hola!</string>
+    <string name="demo">demo1</string>
 
     <string name="lat">41.60788</string>
     <string name="lon">0.623333</string>
@@ -36,7 +40,6 @@
     <string name="opcion8">Email destino sss@gmail.es</string>
     <string name="opcion9">Accediendo a contactos</string>
     <string name="opcion10">Accediendo a la galeria</string>
-
 
 
 
